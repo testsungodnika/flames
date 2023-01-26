@@ -1,0 +1,32 @@
+<head>
+  <title>Flames Calculator</title>
+  <style media="screen">
+
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Teko:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <% if(rec) { %>
+  <script type="text/javascript">
+    console.log("hello")
+    var name1 = '<%-name1%>',name2 = '<%-name2%>',relation = '<%-result%>';
+    alert(name1+" and "+name2+" are "+relation);
+  </script>
+  <% } %>
+
+  <div class="maindiv" style="text-align:center">
+    <h2>Flames Calculator</h2>
+    <form class="Form-Class" action="/" method="post">
+      <input type="text" name="name1" placeholder="Your Name" class="inputname"><br><br>
+      <input type="text" name="name2" placeholder="Others Name" class="inputname"><br><br>
+      <input type="submit" name="submit" value="submit" class="subbtn">
+    </form>
+  </div>
+
+</body>
