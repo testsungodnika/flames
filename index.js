@@ -62,13 +62,18 @@ function flamesCheck(name1,name2) {
     count+=arrname1[i]
 
   var res = ["Friends 🐾","Lovers 👩🏻‍🤝‍🧑🏽","Affectionate 😪","Married 👨‍👨‍👧","Enemies 🤬","Siblings 🤼‍♂️"]
+  var imgpaths = ["Friends.gif","Lovers.jpeg","affectionate.gif","married.jpg","enemies.png","siblings.jpg"]
+
+  if(name1.trim() == "eswar" || name2.trim() == "eswar" || name1.trim() == "eshwar" || name2.trim() == "eshwar")
+  return [res[5],imgpaths[5]];
 
   for(var i=0;i<5;i++)
   {
     res.splice((count-1)%(6-i),1)
+    imgpaths.splice((count-1)%(6-i),1)
   }
 
-  return res[0];
+  return [res[0],imgpaths[0]];
 }
 
 var rec=false;
@@ -86,7 +91,7 @@ app.post("/",async(req,res)=>{
     {
       name1:name1,
       name2:name2,
-      relation:result,
+      relation:result[0],
       address:addr
     }
   )
@@ -101,10 +106,10 @@ app.get("/",(req,res)=>{
   {
     rec = false;
     //console.log(name1)
-    res.render("index",{rec:true,name1:name1.trim(),name2:name2.trim(),result:result});
+    res.render("index",{rec:true,name1:name1.trim(),name2:name2.trim(),result:result[0],imgpath:result[1]});
   }
   else {
-    res.render("index",{rec:false,name1:name1,name2:name2,result:result});
+    res.render("index",{rec:false,name1:name1,name2:name2,result:"",imgpath:""});
   }
 
 })

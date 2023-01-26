@@ -8,17 +8,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Teko:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Orbitron&family=Rowdies:wght@300&family=Teko:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <% if(rec) { %>
-  <script type="text/javascript">
-    console.log("hello")
-    var name1 = '<%-name1%>',name2 = '<%-name2%>',relation = '<%-result%>';
-    alert(name1+" and "+name2+" are "+relation);
-  </script>
+    <div class="msg" id= "msg">
+      <div class="content" id="content">
+        <p><%= name1 %> and <%= name2 %> are <%= result %></p>
+        <img src="imgs/<%= imgpath %>" alt="<%= imgpath %>">
+        <button type="button" name="button" onclick="closeDiv()">CLOSE</button>
+      </div>
+    </div>
   <% } %>
+
+
 
   <div class="maindiv" style="text-align:center">
     <h2>Flames Calculator</h2>
@@ -28,5 +32,12 @@
       <input type="submit" name="submit" value="submit" class="subbtn">
     </form>
   </div>
+
+  <script type="text/javascript">
+    function closeDiv()
+    {
+      document.getElementById('msg').style.display = "none";
+    }
+  </script>
 
 </body>
