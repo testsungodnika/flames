@@ -62,15 +62,13 @@ function flamesCheck(name1,name2) {
     count+=arrname1[i]
 
   var res = ["Friends 🐾","Lovers 👩🏻‍🤝‍🧑🏽","Affectionate 😪","Married 👨‍👨‍👧","Enemies 🤬","Siblings 🤼‍♂️"]
-  var emotes = ["&#10084","&#10084","&#10084","&#10084","&#10084","&#10084"]
 
   for(var i=0;i<5;i++)
   {
     res.splice((count-1)%(6-i),1)
-    emotes.splice((count-1)%(6-i),1)
   }
 
-  return [res[0],emotes[0]];
+  return res[0];
 }
 
 var rec=false;
@@ -88,7 +86,7 @@ app.post("/",async(req,res)=>{
     {
       name1:name1,
       name2:name2,
-      relation:result[0],
+      relation:result,
       address:addr
     }
   )
@@ -103,10 +101,10 @@ app.get("/",(req,res)=>{
   {
     rec = false;
     //console.log(name1)
-    res.render("index",{rec:true,name1:name1.trim(),name2:name2.trim(),result:result[0],emote:result[1]});
+    res.render("index",{rec:true,name1:name1.trim(),name2:name2.trim(),result:result});
   }
   else {
-    res.render("index",{rec:false,name1:name1,name2:name2,result:result[0],emote:result[1]});
+    res.render("index",{rec:false,name1:name1,name2:name2,result:result});
   }
 
 })
